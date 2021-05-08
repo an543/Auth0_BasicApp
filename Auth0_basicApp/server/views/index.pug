@@ -1,0 +1,22 @@
+extends layout
+
+block layout-content
+    div.View.WelcomeView
+        h1.Banner Auth0Site
+        div.Message
+            div.Title
+                h3 Lorem Ipsum Title
+                h1 Main Lorem Ipsum Title
+            span.Details Access the Auth0Site Web Portal
+        div.NavButtons
+            if isAuthenticated
+                a(href="/user")
+                    a(href="http://localhost:8000/index.html")
+                        div.NavButton Go to Database!
+                    a(href="/logout")
+                        div.NavButton Log out
+            else
+                a(href="/login")
+                    div.NavButton Log in
+
+
