@@ -2,12 +2,13 @@ extends layout
 
 block layout-content
     div.View.WelcomeView
-        h1.Banner Auth0Site
+        h1.Banner This is Auth0Site
         div.Message
             div.Title
-                h3 Lorem Ipsum Title
-                h1 Main Lorem Ipsum Title
+                h2 Displaying All Cities
+                h1 Main Database
             span.Details Access the Auth0Site Web Portal
+            span.Details Full access into the Portal to open and display all the citiesa
         div.NavButtons
             if isAuthenticated
                 a(href="/user")
@@ -15,6 +16,8 @@ block layout-content
                         div.NavButton Go to Database!
                     a(href="/logout")
                         div.NavButton Log out
+                    a(href="/user")
+                        div.NavButton Profile
             else
                 a(href="/login")
                     div.NavButton Log in

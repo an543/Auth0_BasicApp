@@ -9,6 +9,7 @@
 
 * {
     box-sizing: border-box;
+    background-image: url("br.jpg");
 }
 
 html,
@@ -32,7 +33,7 @@ body {
 h1,
 h2,
 h3 {
-    font-family: "Raleway", sans-serif;
+    font-family: 'Open Sans', sans-serif;
     text-transform: uppercase;
 
     padding: 0;
@@ -71,7 +72,7 @@ a {
 
     background-size: cover;
 
-    font-family: "Merriweather Sans", sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .Banner {
@@ -82,13 +83,13 @@ a {
 
     width: 100%;
 
-    border-radius: 5px;
+    border-radius: 55px;
 
     overflow: hidden;
-    background: white;
+    background: darkgray;
     padding: 15px;
 
-    font-family: "Share Tech Mono", monospace;
+    font-family: 'Farro', sans-serif;
 
     border-bottom: var(--ui-shadow-border);
     box-shadow: var(--ui-shadow);
@@ -96,7 +97,7 @@ a {
 
 .Message {
     background: white;
-    padding: 30px;
+    padding: 5px;
     border-bottom: var(--ui-shadow-border);
     box-shadow: var(--ui-shadow);
 }
@@ -110,7 +111,9 @@ a {
     flex-direction: column;
     line-height: 1.5em;
 }
-
+table, th, td {
+    border: 1px solid black;
+}
 .NavButtons {
     display: flex;
     width: 100%;
@@ -123,11 +126,11 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
-
+    transition-duration: 0.5s;
     height: 55px;
     width: 150px;
 
-    background: #fa4141;
+    background: darkred ;
 
     border-radius: 30px;
 
@@ -140,7 +143,10 @@ a {
     border-bottom: var(--ui-shadow-border);
     box-shadow: var(--ui-shadow);
 }
-
+.NavButton:hover {
+    background-color: lightslategray;
+    color: black;
+}
 .WelcomeView {
     background: url("food.jpg") left bottom;
     background-size: cover;
