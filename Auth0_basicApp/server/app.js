@@ -4,7 +4,9 @@ const path = require('path');
 const expressSession = require('express-session');
 const passport = require('passport');
 const Auth0Strategy = require('passport-auth0');
+const jwt = require('jsonwebtoken');
 
+const accessTokenSecret = 'youraccesstokensecret';
 require('dotenv').config();
 
 const open = require('open');
@@ -69,6 +71,16 @@ passport.deserializeUser((user, done) => {
 // Creating custom middleware with Express
 app.use((req, res, next) => {
     res.locals.isAuthenticated = req.isAuthenticated();
+    if (req.user) {
+        if(typeof(res._headers.authorization) === "undefined") {
+            const accessToken = jwt.sign(req.user._json, accessTokenSecret, {expiresIn: '20m'});
+            res.setHeader('Authorization', 'Bearer ' + accessToken);
+        }
+    }else if (!req.user){
+        try {
+            res.setHeader('Authorization', ' ');
+        }catch{}
+    }
     next();
 });
 
@@ -84,12 +96,34 @@ const secured = (req, res, next) => {
     req.session.returnTo = req.originalUrl;
     res.redirect('/login');
 };
-
+const authenticateJWT = (req, res, next) => {
+    console.log("authenticating");
+    if (req.user) {
+        const authHeader = res._headers.authorization;
+        console.log(authHeader);
+        if (authHeader) {
+            const token = authHeader.split(' ')[1];
+            jwt.verify(token, accessTokenSecret, (err, user) => {
+                if (err) {
+                    return res.sendStatus(403);
+                }
+                req.user = user;
+                next();
+            });
+        } else {
+            res.sendStatus(401);
+        }
+    } else {
+        console.log("Failed to validate token!");
+        req.session.returnTo = req.originalUrl;
+        res.redirect("/login");
+    }
+};
 app.get('/', (req, res) => {
     res.render('index', { title: 'Home' });
 });
 
-app.get('/user', secured, (req, res, next) => {
+app.get('/user', authenticateJWT, (req, res, next) => {
     const { _raw, _json, ...userProfile } = req.user;
     res.render('user', {
         title: 'Profile',
