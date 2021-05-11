@@ -23,9 +23,9 @@ Clicked on Database Button
 ![image](https://user-images.githubusercontent.com/46980112/117749962-9d9c7800-b1e0-11eb-9db0-5e3bda326d3c.png)
 
 
-***JWT Auth. ***
-![image](https://user-images.githubusercontent.com/46980112/117748116-71cbc300-b1dd-11eb-9c79-e9201f54db69.png)
-
+***JWT Auth.***
+- User successfully logged in after JWT has verified the token
+![image](https://user-images.githubusercontent.com/46980112/117751396-071d8600-b1e3-11eb-9733-8e817be46076.png)
 ***JWT Check authorized users***
 - JWT cant verify the token because the user is not logging yet.
 ![image](https://user-images.githubusercontent.com/46980112/117751033-6cbd4280-b1e2-11eb-9ddc-2163b0db6fa6.png)
