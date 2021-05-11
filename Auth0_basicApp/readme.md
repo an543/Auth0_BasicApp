@@ -21,4 +21,5 @@
 ***Access into Database***
 Clicked on Database Button
 ![image](https://user-images.githubusercontent.com/46980112/117551656-28c91280-b015-11eb-9735-119835a28346.png)
-
+***JWT Auth. ***
+![image](https://user-images.githubusercontent.com/46980112/117748116-71cbc300-b1dd-11eb-9c79-e9201f54db69.png)
